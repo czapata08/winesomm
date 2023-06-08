@@ -3,32 +3,39 @@ import Document, { Head, Html, Main, NextScript } from "next/document";
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang='en'>
         <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <meta
-            name="description"
-            content="Generate your next Twitter bio in seconds."
-          />
-          <meta property="og:site_name" content="twitterbio.com" />
-          <meta
-            property="og:description"
-            content="Generate your next Twitter bio in seconds."
-          />
-          <meta property="og:title" content="Twitter Bio Generator" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Twitter Bio Generator" />
-          <meta
-            name="twitter:description"
-            content="Generate your next Twitter bio in seconds."
+          <link
+            rel='icon'
+            href='/favicon.ico'
           />
           <meta
-            property="og:image"
-            content="https://twitterbio.com/og-image.png"
+            name='description'
+            content='Your Personal AI Wine Advisor'
           />
           <meta
-            name="twitter:image"
-            content="https://twitterbio.com/og-image.png"
+            property='og:site_name'
+            content='winebot'
+          />
+          <meta
+            property='og:description'
+            content='Your Personal AI Wine Advisor'
+          />
+          <meta
+            property='og:title'
+            content='AI Winebot'
+          />
+          <meta
+            name='winebot:card'
+            content='summary_large_image'
+          />
+          <meta
+            name='winebot'
+            content='AI Winebot'
+          />
+          <meta
+            name='winebot: description'
+            content='Become A Wine Expert In Seconds'
           />
         </Head>
         <body>
