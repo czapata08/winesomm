@@ -24,6 +24,7 @@ export default function Login() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const email = e.currentTarget.email.value;
     signIn("email", { email });
   };
@@ -70,6 +71,7 @@ export default function Login() {
               placeholder='Email'
             />
             <button
+              disabled={loading}
               type='submit'
               className='group flex justify-center items-center space-x-5 w-full sm:px-4 h-16 my-2 rounded-md focus:outline-none bg-black text-white'>
               Email Link Sign-in
