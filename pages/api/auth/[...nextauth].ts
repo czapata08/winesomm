@@ -15,16 +15,11 @@ export default NextAuth({
         },
       },
       from: process.env.EMAIL_FROM,
+      maxAge: 10 * 60,
     }),
   ],
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
-
-  // pages: {
-  //   signIn: "/login",
-  //   verifyRequest: "/login",
-  //   error: "/login", //error code passed in query string as ?error=
-  // },
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {

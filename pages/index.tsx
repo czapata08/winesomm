@@ -11,8 +11,6 @@ const logo = "/winebot.png";
 const description = "Winebot Login Page";
 
 export default function Login() {
-  const [loading, setLoading] = useState(false);
-
   const { query } = useRouter();
   const { error } = query;
 
@@ -24,7 +22,6 @@ export default function Login() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
     const email = e.currentTarget.email.value;
     signIn("email", { email });
   };
