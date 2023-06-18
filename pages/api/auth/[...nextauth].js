@@ -15,11 +15,16 @@ export default NextAuth({
         },
       },
       from: process.env.EMAIL_FROM,
-      maxAge: 10 * 60,
     }),
   ],
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
+
+  pages: {
+    signIn: "/",
+    verifyRequest: "/winebot_auth",
+    error: "/", //error code passed in query string as ?error=
+  },
 
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
@@ -36,9 +41,9 @@ export default NextAuth({
         credentials
       );
 
-      const getUser: object | null = await prisma.user.findUnique({
+      const getUser = await prisma.user.findUnique({
         where: {
-          email: user.email as string,
+          email: user.email,
         },
         select: {
           email: true,
@@ -48,10 +53,25 @@ export default NextAuth({
       });
 
       if (!getUser) {
+        console.log("user: ", user, account, email, credentials, "INSIDE");
         return false;
       } else {
+        console.log("user: ", user, account, email, credentials, "TRUE");
+
         return true;
       }
+    },
+    async session({ session, user }) {
+      if (session) {
+        console.log("session: ", session, "user", user);
+      }
+      return Promise.resolve({
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+        },
+      });
     },
   },
 });

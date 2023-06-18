@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 // only run middleware on home page
 export const config = {
-  matcher: "/test",
+  matcher: "/home",
 };
 
 export default function middleware(req: NextRequest) {
@@ -15,3 +15,5 @@ export default function middleware(req: NextRequest) {
   req.nextUrl.pathname = `/${locale}/${country}`;
   return NextResponse.rewrite(req.nextUrl);
 }
+
+//ts-ignore

@@ -29,6 +29,9 @@ const Home: NextPage = () => {
   const bioRef = useRef<null | HTMLDivElement>(null);
   const { data: session, status } = useSession();
 
+  console.log("status:", status);
+  console.log("session:", session);
+
   const scrollToBios = () => {
     if (bioRef.current !== null) {
       bioRef.current.scrollIntoView({ behavior: "smooth" });

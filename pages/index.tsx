@@ -1,30 +1,39 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import toast, { Toaster } from "react-hot-toast";
 import { FormEvent } from "react";
-
 const pageTitle = "Login";
 const logo = "/winebot.png";
 const description = "Winebot Login Page";
+import { useSession } from "next-auth/react";
 
 export default function Login() {
+  const router = useRouter();
   const { query } = useRouter();
   const { error } = query;
+
+  const { data: session } = useSession();
 
   //Error handling and notification w Toast
   useEffect(() => {
     const errorMessage = Array.isArray(error) ? error.pop() : error;
     errorMessage && toast.error(errorMessage);
+    console.log("error.message: ", errorMessage);
   });
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const email = e.currentTarget.email.value;
     signIn("email", { email });
   };
+
+  if (session) {
+    return router.push("/winebot_auth");
+  }
 
   return (
     <div className='min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
