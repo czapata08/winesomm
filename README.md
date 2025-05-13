@@ -2,7 +2,7 @@
 
 An AI-powered sommelier that helps users discover wines they’ll love — and understand why. Whether you're a curious beginner or an experienced wine lover, AISommelier offers personalized recommendations and educational insights using state-of-the-art AI.
 
-[![AISommelier Screenshot](./public/screenshot.png)](https://winesomm.vercel.app/)
+[![AISommelier Screenshot](./public/winebot_screenshot.png)](https://winesomm.vercel.app/)
 
 ---
 
